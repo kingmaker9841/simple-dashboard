@@ -1,17 +1,17 @@
 /* eslint-disable import/no-anonymous-default-export */
 export default {
-  title: 'Home Title for Project Name ',
-  titleTemplate: '%s | Project Name',
-  description: 'Project Name description',
+  title: 'Jobins Frontend Challenge',
+  titleTemplate: '%s | Jobins',
+  description: 'Slicing Figma Desing File',
   openGraph: {
     type: 'website',
     locale: 'en_IE',
-    url: 'https://www.url.ie/',
-    site_name: 'Project Name',
+    url: 'https://www.milan-panta.netlify.app/',
+    site_name: 'Jobins',
   },
   twitter: {
-    handle: '@project_name',
-    site: '@project_name',
+    handle: '@poppygloria2021',
+    site: '@poppygloria2021',
     cardType: 'summary_large_image',
   },
   additionalLinkTags: [

@@ -3,5 +3,36 @@ html {
 }
 
 body {
-  @apply m-0 p-0 font-sans;
+  @apply m-0 p-0 font-sans text-base;
+  line-height: 1.375rem !important;
+}
+
+h1,
+.h1 {
+  @apply text-4xl font-bold text-black;
+}
+
+h2,
+.h2 {
+  @apply text-3xl font-bold text-black;
+}
+
+h3,
+.h3 {
+  @apply text-2xl font-bold text-black;
+}
+
+h4,
+.h4 {
+  @apply text-xl font-semibold text-black;
+}
+
+h5,
+.h5 {
+  @apply text-sm font-normal leading-5 text-slateLavender;
+}
+
+h6,
+.h6 {
+  @apply text-xs font-normal;
 }
