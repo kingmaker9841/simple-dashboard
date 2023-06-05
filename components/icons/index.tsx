@@ -6,6 +6,7 @@ import ChevronLeftIcon from './ChevronLeftIcon';
 import ChevronRightIcon from './ChevronRightIcon';
 import ChevronUpIcon from './ChevronUpIcon';
 import CirclePlusIcon from './CirclePlusIcon';
+import HomeIcon from './HomeIcon';
 import IndentDecreaseIcon from './IndentDecreaseIcon';
 import JobinsIcon from './JobinsIcon';
 import SearchIcon from './SearchIcon';
@@ -21,6 +22,7 @@ export {
   ChevronRightIcon,
   ChevronUpIcon,
   CirclePlusIcon,
+  HomeIcon,
   IndentDecreaseIcon,
   JobinsIcon,
   SearchIcon,

@@ -1,0 +1,55 @@
+// Base
+$header-height: 64px;
+$header-top-margin: 8px;
+$padding-left: 24px;
+$sidebar-collapsed-width: 70px;
+$sidebar-transition: width ease-in-out 400ms;
+$sidebar-width: 260px;
+$total-viewport-width: 100vw;
+
+// Derived
+$header-collapsed-width: calc($total-viewport-width - $sidebar-collapsed-width - $padding-left);
+$header-width: calc($total-viewport-width - $sidebar-width - $padding-left);
+$main-content-collapsed-width: calc($total-viewport-width - $sidebar-collapsed-width - $padding-left);
+$main-content-top-margin: calc($header-height + $header-top-margin + 3px);
+$main-content-width: calc($total-viewport-width - $sidebar-width - $padding-left);
+
+.header {
+  margin-top: 8px;
+  min-height: 64px;
+  padding: 12px 28px 12px 0px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: $sidebar-transition;
+  width: $header-width;
+}
+
+.header--collapsed {
+  margin-top: 8px;
+  min-height: 64px;
+  padding: 12px 28px 12px 0px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: $sidebar-transition;
+  width: $header-collapsed-width;
+}
+
+.main-content {
+  height: auto;
+  position: absolute;
+  right: 0;
+  top: $main-content-top-margin;
+  transition: $sidebar-transition;
+  width: $main-content-width;
+}
+
+.main-content--collapsed {
+  height: auto;
+  position: absolute;
+  right: 0;
+  top: $main-content-top-margin;
+  transition: $sidebar-transition;
+  width: $main-content-collapsed-width;
+}

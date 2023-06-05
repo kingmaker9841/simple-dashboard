@@ -9,10 +9,13 @@ module.exports = {
       xl: '1.125rem', // 18 px
       '2xl': ['1.375rem', '1.5rem'], // 22px
       '3xl': ['1.5rem', '1.375rem'], // 24px
-      '4xl': ['2rem', {
-        lineHeight: '2rem',
-        letterSpacing: '-0.02em'
-      }], // 32px
+      '4xl': [
+        '2rem',
+        {
+          lineHeight: '2rem',
+          letterSpacing: '-0.02em',
+        },
+      ], // 32px
       '5xl': '3.052rem',
     },
     extend: {
@@ -21,30 +24,22 @@ module.exports = {
         current: 'currentColor',
         black: '#23272E',
         slateLavender: '#8B909A',
+        pearlWhite: '#F5F5F5',
+        mistWhite: '#F3F4F8',
         emeraldGreen: '#1EB564',
+        lushMeadow: '#28C76F',
         vividBlue: '#0F60FF',
         white: '#ffffff',
         goldenSun: '#FFC600',
         crimsonCoral: '#EA5455',
         lavenderMist: '#E9E7FD',
-        gradientBlue: 'linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #7367F0'
+        gradientBlue: 'linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #7367F0',
+        blueGem: '#7367F0'
       },
       fontFamily: {
         sans: [
           'Public Sans',
-          'system-ui',
-          '-apple-system',
-          'BlinkMacSystemFont',
-          'Segoe UI',
-          'Roboto',
-          'Helvetica Neue',
-          'Arial',
-          'Noto Sans',
-          'sans-serif',
-          'Apple Color Emoji',
-          'Segoe UI Emoji',
-          'Segoe UI Symbol',
-          'Noto Color Emoji',
+
         ],
       },
     },
