@@ -6,8 +6,8 @@ import { AppLayout } from '@components/layouts/AppLayout';
 import { useRouter } from 'next/router';
 
 // Styles
-import '../assets/sass/style.scss';
 import '../assets/sass/tailwind.scss';
+import '../assets/sass/style.scss';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { events: routerEvents } = useRouter();
