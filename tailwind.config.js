@@ -34,13 +34,19 @@ module.exports = {
         crimsonCoral: '#EA5455',
         lavenderMist: '#E9E7FD',
         gradientBlue: 'linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #7367F0',
-        blueGem: '#7367F0'
+        blueGem: '#7367F0',
+        lavenderGray: '#DBDADE',
+      },
+      screens: {
+        sm: '640px',
+        md: '768px',
+        'md-2': '900px',
+        lg: '1024px',
+        xl: '1280px',
+        '2xl': '1536px',
       },
       fontFamily: {
-        sans: [
-          'Public Sans',
-
-        ],
+        sans: ['Public Sans'],
       },
     },
   },

@@ -17,9 +17,7 @@ export const AppLayout: FunctionComponent<Props> = ({ children }) => {
     <main>
       <Sidebar getSidebarCollapse={getSidebarCollapse} />
       <Header sidebarCollapsed={sidebarCollapsed} />
-      <div className={['bg-white', sidebarCollapsed ? 'main-content--collapsed' : 'main-content'].join(' ')}>
-        {children}
-      </div>
+      <div className={[sidebarCollapsed ? 'main-content--collapsed' : 'main-content'].join(' ')}>{children}</div>
     </main>
   );
 };

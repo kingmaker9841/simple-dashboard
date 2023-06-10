@@ -10,6 +10,24 @@ type Props = {
 const Sidebar: FunctionComponent<Props> = ({ getSidebarCollapse }) => {
   const [showSidebar, setShowSidebar] = React.useState(true);
 
+  // React.useEffect(() => {
+  //   getSidebarCollapse(showSidebar);
+  // }, [getSidebarCollapse, showSidebar]);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 700) {
+        if (showSidebar) setShowSidebar(sidebar => !sidebar);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [showSidebar]);
+
   const handleSidebarCollapse = () => {
     setShowSidebar(sidebar => !sidebar);
     getSidebarCollapse(showSidebar);
