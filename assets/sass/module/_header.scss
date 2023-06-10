@@ -1,55 +1,77 @@
 // Base
 $header-height: 64px;
 $header-top-margin: 8px;
-$padding-left: 24px;
+$padding-left: 26px;
+$main-content-margin-right: 34px;
 $sidebar-collapsed-width: 70px;
-$sidebar-transition: width ease-in-out 400ms;
+$sidebar-transition: left ease-in-out 400ms;
 $sidebar-width: 260px;
 $total-viewport-width: 100vw;
 
 // Derived
 $header-collapsed-width: calc($total-viewport-width - $sidebar-collapsed-width - $padding-left);
 $header-width: calc($total-viewport-width - $sidebar-width - $padding-left);
-$main-content-collapsed-width: calc($total-viewport-width - $sidebar-collapsed-width - $padding-left);
+$main-content-collapsed-width: calc(
+  $total-viewport-width - $sidebar-collapsed-width - $padding-left - $main-content-margin-right
+);
 $main-content-top-margin: calc($header-height + $header-top-margin + 3px);
-$main-content-width: calc($total-viewport-width - $sidebar-width - $padding-left);
+$main-content-width: calc($total-viewport-width - $sidebar-width - $padding-left - $main-content-margin-right);
+$content-left: calc($sidebar-width + $padding-left);
+$content-left-collapsed: calc($sidebar-collapsed-width + $padding-left);
+$content-width: calc($total-viewport-width - $sidebar-width - $padding-left);
 
 .header {
   margin-top: 8px;
   min-height: 64px;
-  padding: 12px 28px 12px 0px;
+  padding: 12px 0px;
   position: absolute;
-  right: 0;
   top: 0;
+  left: $content-left;
   transition: $sidebar-transition;
-  width: $header-width;
+  width: calc($content-width - $padding-left);
+  max-width: 1920px;
 }
 
 .header--collapsed {
   margin-top: 8px;
   min-height: 64px;
-  padding: 12px 28px 12px 0px;
+  padding: 12px 0px;
   position: absolute;
-  right: 0;
+  left: $content-left-collapsed;
   top: 0;
   transition: $sidebar-transition;
-  width: $header-collapsed-width;
+  width: $main-content-collapsed-width;
+  max-width: 1920px;
 }
 
 .main-content {
   height: auto;
   position: absolute;
-  right: 0;
+  left: $content-left;
   top: $main-content-top-margin;
   transition: $sidebar-transition;
-  width: $main-content-width;
+  width: calc($content-width - $padding-left);
+  max-width: 1920px;
 }
 
 .main-content--collapsed {
   height: auto;
   position: absolute;
-  right: 0;
+  left: $content-left-collapsed;
   top: $main-content-top-margin;
   transition: $sidebar-transition;
   width: $main-content-collapsed-width;
+  max-width: 1920px;
+}
+
+@media (max-width: 700px) {
+  .main-content,
+  .main-content--collapsed,
+  .header,
+  .header--collapsed {
+    width: calc(100% - 30px);
+    left: calc($sidebar-collapsed-width + 8px);
+    max-width: 100%;
+    min-width: 400px;
+  }
 }
