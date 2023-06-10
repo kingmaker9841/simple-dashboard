@@ -2,12 +2,9 @@ import React from 'react';
 import DropDown from '@components/ui/select/Select';
 import Search from '@components/ui/search/SearchTable';
 import DashboardTable from '@components/ui/table/DashboardTable';
-
-export enum OrderStatusEnum {
-  allOrders = 'All Orders',
-  completed = 'Completed',
-  canceled = 'Canceled',
-}
+import { OrderStatusEnum } from 'context/orderStatusContext';
+import useOrderStatus from 'hooks/useOrderStatus';
+import type { GetSearchProps } from '@components/ui/search/Search';
 
 const dropdownOptions = [
   {
@@ -28,13 +25,15 @@ const dropdownOptions = [
 ];
 
 export const OrdersStatus: React.FunctionComponent = () => {
+  const orderContext = useOrderStatus();
   const [activeOrderStatus, setActiveOrderStatus] = React.useState<string>(OrderStatusEnum.allOrders);
 
-  const handleClick = (status: string) => {
+  const handleClick = (status: OrderStatusEnum) => {
+    orderContext.setOrderStatus(status);
     setActiveOrderStatus(status);
   };
   return (
-    <div className="flex justify-start">
+    <div className="ml-8 flex justify-start">
       <div
         onClick={() => handleClick(OrderStatusEnum.allOrders)}
         className={[
@@ -90,24 +89,34 @@ export const OrdersStatus: React.FunctionComponent = () => {
 };
 
 const SelectStatus: React.FunctionComponent = () => {
-  return <DropDown optionPrefix="Status: " options={dropdownOptions} />;
+  const context = useOrderStatus();
+
+  const getSelectedOption = (val: OrderStatusEnum) => {
+    context.setOrderStatus(val);
+  };
+
+  return <DropDown optionPrefix="Status: " options={dropdownOptions} getSelectedOption={getSelectedOption} />;
 };
 
-const SearchTable: React.FunctionComponent = () => {
-  return <Search />;
+const SearchTable: React.FunctionComponent<GetSearchProps> = ({ getSearchText }) => {
+  return <Search getSearchText={getSearchText} />;
 };
 
 const UserTable: React.FunctionComponent = () => {
+  const [text, setText] = React.useState('');
+  const handleSearchText = (text: React.SetStateAction<string>) => {
+    setText(text);
+  };
   return (
     <div>
       <div className="mt-4 md:flex md:justify-start">
         <SelectStatus />
         <div className="mt-2 w-full md:ml-4 md:mt-0 md:w-[200px]">
-          <SearchTable />
+          <SearchTable getSearchText={handleSearchText} />
         </div>
       </div>
       <div className="mt-[22px] rounded-[16px] bg-white">
-        <DashboardTable />
+        <DashboardTable searchText={text} />
       </div>
     </div>
   );

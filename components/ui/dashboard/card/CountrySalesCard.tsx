@@ -1,12 +1,17 @@
 import React from 'react';
 import { countrySalesLists } from 'data/countrySalesLists';
 import Image from 'next/image';
+import { convertPercentageToPixelWidthClass } from 'utils/helper';
 
 const CountrySalesCard: React.FunctionComponent = () => {
   return (
-    <div className="h-[100%] rounded-lg bg-white">
+    <div className="h-[100%] rounded-2xl bg-white">
       <div className="ml-3 rounded-lg  px-[18px] py-[31px]">
-        {countrySalesLists.map(sales => {
+        {countrySalesLists.map((sales, _) => {
+          let fracWidth = convertPercentageToPixelWidthClass(sales.progressText, 168);
+          if (_ === 0) fracWidth = 'w-2/3';
+          if (_ === 1) fracWidth = 'w-1/3';
+          if (_ === 2) fracWidth = 'w-1/4';
           return (
             <div
               key={sales.id}
@@ -16,16 +21,22 @@ const CountrySalesCard: React.FunctionComponent = () => {
               ].join(' ')}
             >
               <div className="h-[34px] w-[45.05px]">
-                <Image src={sales.icon} width="34px" height="34px" alt={`${sales.country} Icon`} />
+                <Image src={sales.icon} width="34px" height="34px" alt={`${sales.country} Icon`} priority={true} />
               </div>
+
               <div className="ml-4 w-[83px]">
                 <p className="text-base font-semibold !leading-[21px]">{sales.totalSales}</p>
                 <p className="text-xs font-normal !leading-5 text-slateLavender">{sales.country}</p>
               </div>
+
               <div className="ml-4 h-2 w-[168px] rounded-full bg-blue-200">
-                <div className="h-full w-2/3 rounded-full bg-blue-600 text-center text-xs text-white"></div>
+                <div
+                  className={['h-full rounded-full bg-blue-600 text-center text-xs text-white', fracWidth].join(' ')}
+                ></div>
               </div>
+
               <sales.arrowIcon className="ml-5" />
+
               <p
                 className={[
                   '!leading[21px] ml-2 text-base text-lushMeadow',

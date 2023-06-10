@@ -4,7 +4,7 @@ import { ArrowUpIcon } from '@components/icons';
 
 const SalesCard: React.FunctionComponent = () => {
   return (
-    <div className="h-[100%] rounded-lg bg-white">
+    <div className="h-[100%] rounded-2xl bg-white">
       <div className="pt-[20px] pb-[28px] pr-[20px]">
         <div className="grid grid-cols-2 gap-5">
           <div className="ml-0 flex items-center justify-center !pl-0">

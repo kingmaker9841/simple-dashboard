@@ -11,13 +11,13 @@ const Dashboard: React.FunctionComponent = () => {
     <div className="w-full min-w-full">
       <div className="w-full min-w-full">
         <div className="grid w-full min-w-full auto-rows-auto grid-cols-1 gap-4 md:grid-cols-4 2xl:grid-cols-9">
-          <div className="col-span-4 h-[100%] w-full lg:col-span-2 2xl:col-span-3">
+          <div className="col-span-4 h-[100%] w-full rounded-2xl lg:col-span-2 2xl:col-span-3">
             <SalesCard />
           </div>
-          <div className="col-span-4 h-[100%] lg:col-span-2 2xl:col-span-2">
+          <div className="col-span-4 h-[100%] rounded-2xl lg:col-span-2 2xl:col-span-2">
             <ProfitCard />
           </div>
-          <div className=" col-span-4 h-[100%] xl:col-span-4 2xl:col-span-4">
+          <div className="col-span-4 h-[100%] rounded-2xl xl:col-span-4 2xl:col-span-4">
             <CountrySalesCard />
           </div>
         </div>

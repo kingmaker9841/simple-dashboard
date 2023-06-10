@@ -1,0 +1,19 @@
+.outer-circle {
+  height: 72px;
+  width: 72px;
+  border-radius: 50%;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #7367f0 !important;
+  position: relative;
+}
+
+.inner-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 58px;
+  width: 58px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  z-index: 100;
+}

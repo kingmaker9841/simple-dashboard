@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import type { AppProps } from 'next/app';
-import { DefaultSeo } from 'next-seo';
-import SEO from '../next-seo.config';
 import { AppLayout } from '@components/layouts/AppLayout';
+import { DefaultSeo } from 'next-seo';
+import { OrderStatusContextProvider } from 'context/orderStatusContext';
 import { useRouter } from 'next/router';
+import SEO from '../next-seo.config';
+import type { AppProps } from 'next/app';
 
 // Styles
 import '../assets/sass/tailwind.scss';
@@ -47,9 +48,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         ]}
       />
       {pageLoading ? <div className="loader"></div> : ''}
-      <AppLayout>
-        <Component {...pageProps} />
-      </AppLayout>
+      <OrderStatusContextProvider>
+        <AppLayout>
+          <Component {...pageProps} />
+        </AppLayout>
+      </OrderStatusContextProvider>
     </>
   );
 }
