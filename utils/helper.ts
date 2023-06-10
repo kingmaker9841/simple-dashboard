@@ -32,3 +32,10 @@ export const range = (start: number, end: number) => {
   */
   return Array.from({ length }, (_, idx) => idx + start);
 };
+
+export const convertPercentageToPixelWidthClass = (percentage: string, totalWidth: number): string => {
+  const parsedPercentage = parseFloat(percentage);
+  const pixelWidth = Math.round((parsedPercentage / 100) * totalWidth);
+
+  return `w-${pixelWidth}px`;
+};

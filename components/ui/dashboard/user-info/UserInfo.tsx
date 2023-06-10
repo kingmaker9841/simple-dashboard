@@ -3,8 +3,8 @@ import React from 'react';
 const Profile: React.FunctionComponent = () => {
   return (
     <div className="md2:pl-12 flex items-center justify-start pl-6">
-      <div className="z-50 h-[72px] w-[72px] rounded-[36px] border-4 border-blueGem ">
-        <div className="h-full w-full rounded-[36px] bg-blueGem opacity-60"></div>
+      <div className="outer-circle">
+        <div className="inner-circle"></div>
       </div>
       <div className="ml-4">
         <p className="h4 font-semibold leading-[22px] text-black">Robert Fox</p>
@@ -61,7 +61,7 @@ const ShippingAddress: React.FunctionComponent = () => {
 
 const UserInfo: React.FunctionComponent = ({ children }) => {
   return (
-    <div className="mt-4 rounded-lg bg-white pt-2">
+    <div className="mt-4 rounded-2xl bg-white pt-2">
       <div className="mt-4 ">
         <div className={['grid grid-cols-1 gap-4', 'md:grid-cols-2', 'xl:grid-cols-3'].join(' ')}>
           <Profile />

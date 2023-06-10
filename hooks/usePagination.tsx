@@ -16,6 +16,7 @@ export const usePagination = ({
   siblingCount = 1,
   currentPage,
 }: PaginationProps): (number | string)[] => {
+  console.log(totalCount);
   const paginationRange = React.useMemo(() => {
     const totalPageCount = Math.ceil(totalCount / pageSize);
 

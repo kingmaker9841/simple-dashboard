@@ -4,7 +4,7 @@ import { ArrowUpIcon } from '@components/icons';
 
 const ProfitCard: React.FunctionComponent = () => {
   return (
-    <div className="h-[100%] rounded-lg bg-white">
+    <div className="h-[100%] rounded-2xl bg-white">
       <div className="ml-3 rounded-lg  pt-[24px] pl-6 pb-6">
         <div className="flex justify-start align-middle">
           <Image src="/assets/yen.png" width="52px" height="43px" alt="Yen Image" />

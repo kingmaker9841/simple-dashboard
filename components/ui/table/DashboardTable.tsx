@@ -1,10 +1,12 @@
 import React from 'react';
-import THead from '@components/ui/table/TableHead';
-import TBody from '@components/ui/table/TableBody';
-import TFooter from '@components/ui/table/TableFooter';
-import Pagination from '@components/ui/pagination/Pagination';
 import { tableHead, tableRow } from 'data/tableData';
 import DropDown from '@components/ui/select/Select';
+import Pagination from '@components/ui/pagination/Pagination';
+import TBody from '@components/ui/table/TableBody';
+import TFooter from '@components/ui/table/TableFooter';
+import THead from '@components/ui/table/TableHead';
+import useOrderStatus from 'hooks/useOrderStatus';
+import { OrderStatusEnum } from 'context/orderStatusContext';
 
 export type HeaderProps = {
   id: number;
@@ -71,7 +73,15 @@ export const TableBody: React.FunctionComponent<{ rows: BodyProps[] }> = ({ rows
           <td className="px-9 py-4">{row.date}</td>
           <td className="px-9 py-4">{row.total}</td>
           <td className="px-9 py-4">{row.method}</td>
-          <td className="px-9 py-4 text-goldenSun">{row.status}</td>
+          <td
+            className={[
+              'px-9 py-4 text-goldenSun',
+              row.status === OrderStatusEnum.completed ? 'text-emeraldGreen' : '',
+              row.status === OrderStatusEnum.canceled ? 'text-crimsonCoral' : '',
+            ].join(' ')}
+          >
+            {row.status}
+          </td>
           <td className="px-9 py-4 text-vividBlue">View Details</td>
         </tr>
       ))}
@@ -83,9 +93,15 @@ type FooterProps = {
   currentPage: number;
   setCurrentPage: (_: number) => void;
   getPageSize: (_: number) => void;
+  count: number;
 };
 
-export const TableFooter: React.FunctionComponent<FooterProps> = ({ currentPage, setCurrentPage, getPageSize }) => {
+export const TableFooter: React.FunctionComponent<FooterProps> = ({
+  currentPage,
+  setCurrentPage,
+  getPageSize,
+  count,
+}) => {
   const [pageSizeState, setPageSizeState] = React.useState(pageSize);
 
   const getSelectedOption = (val: number) => {
@@ -112,7 +128,7 @@ export const TableFooter: React.FunctionComponent<FooterProps> = ({ currentPage,
           <Pagination
             className="pagination-bar"
             currentPage={currentPage}
-            totalCount={tableRow.length}
+            totalCount={count}
             pageSize={pageSizeState}
             onPageChange={page => setCurrentPage(page as number)}
             showComponent={<ShowComponent />}
@@ -123,9 +139,15 @@ export const TableFooter: React.FunctionComponent<FooterProps> = ({ currentPage,
   );
 };
 
-const DashboardTable: React.FunctionComponent = () => {
+type Props = {
+  searchText: string;
+};
+
+const DashboardTable: React.FunctionComponent<Props> = ({ searchText }) => {
+  const orderContext = useOrderStatus();
   const [currentPage, setCurrentPage] = React.useState<number>(1);
   const [pageSizeState, setPageSizeState] = React.useState(pageSize);
+  const [count, setCount] = React.useState<number>(0);
 
   const getPageSize = (val: number) => {
     setPageSizeState(val);
@@ -134,15 +156,23 @@ const DashboardTable: React.FunctionComponent = () => {
   const currentTableData = React.useMemo(() => {
     const firstPageIndex = (currentPage - 1) * pageSizeState;
     const lastPageIndex = firstPageIndex + pageSizeState;
-    return tableRow.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage, pageSizeState]);
+    const result =
+      orderContext.orderStatus === OrderStatusEnum.allOrders
+        ? tableRow
+        : tableRow.filter(row => row.status === orderContext.orderStatus);
+
+    const searchResult = searchText === '' ? result : result.filter(el => el.customer.includes(searchText));
+    setCount(searchResult.length);
+    const slicedRow = searchResult.slice(firstPageIndex, lastPageIndex);
+    return slicedRow;
+  }, [currentPage, pageSizeState, orderContext.orderStatus, searchText]);
 
   return (
     <div className="table-dashboard overflow-x-auto">
       <table className="w-full rounded-[16px] px-4 py-2">
         <TableHead cols={tableHead} />
         <TableBody rows={currentTableData} />
-        <TableFooter {...{ currentPage, setCurrentPage, getPageSize }} />
+        <TableFooter {...{ currentPage, setCurrentPage, getPageSize, currentTableData, count }} />
       </table>
     </div>
   );

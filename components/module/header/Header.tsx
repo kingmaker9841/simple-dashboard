@@ -17,7 +17,7 @@ const Header: FunctionComponent<Props> = ({ sidebarCollapsed }) => {
               <span className="text-white">4</span>
             </div>
           </div>
-          <div className="relative h-[38px] w-[38px] rounded-[38px] bg-blueGem opacity-70 ">
+          <div className="relative h-[38px] w-[38px] rounded-[38px] bg-blueGem">
             <div className="absolute bottom-0 right-0 h-3 w-3 rounded-md border-2 border-white bg-lushMeadow"></div>
           </div>
         </div>
