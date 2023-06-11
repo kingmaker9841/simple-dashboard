@@ -1,7 +1,8 @@
 import React from 'react';
+import { classNames } from 'utils/helper';
+import { convertPercentageToPixelWidthClass } from 'utils/helper';
 import { countrySalesLists } from 'data/countrySalesLists';
 import Image from 'next/image';
-import { convertPercentageToPixelWidthClass } from 'utils/helper';
 
 const CountrySalesCard: React.FunctionComponent = () => {
   return (
@@ -15,10 +16,10 @@ const CountrySalesCard: React.FunctionComponent = () => {
           return (
             <div
               key={sales.id}
-              className={[
+              className={classNames(
                 'flex items-center justify-start',
-                sales.id === countrySalesLists.length ? 'mb-0' : 'mb-[18px]',
-              ].join(' ')}
+                sales.id === countrySalesLists.length ? 'mb-0' : 'mb-[18px]'
+              )}
             >
               <div className="h-[34px] w-[45.05px]">
                 <Image src={sales.icon} width="34px" height="34px" alt={`${sales.country} Icon`} priority={true} />
@@ -31,17 +32,17 @@ const CountrySalesCard: React.FunctionComponent = () => {
 
               <div className="ml-4 h-2 w-[168px] rounded-full bg-blue-200">
                 <div
-                  className={['h-full rounded-full bg-blue-600 text-center text-xs text-white', fracWidth].join(' ')}
+                  className={classNames('h-full rounded-full bg-blue-600 text-center text-xs text-white', fracWidth)}
                 ></div>
               </div>
 
               <sales.arrowIcon className="ml-5" />
 
               <p
-                className={[
+                className={classNames(
                   '!leading[21px] ml-2 text-base text-lushMeadow',
-                  sales.salesProgress === 'up' ? 'text-lushMeadow' : 'text-crimsonCoral',
-                ].join(' ')}
+                  sales.salesProgress === 'up' ? 'text-lushMeadow' : 'text-crimsonCoral'
+                )}
               >
                 {sales.progress}
               </p>

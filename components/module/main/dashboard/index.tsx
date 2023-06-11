@@ -1,9 +1,9 @@
 import React from 'react';
-import SalesCard from '@components/ui/dashboard/card/SalesCard';
-import ProfitCard from '@components/ui/dashboard/card/ProfitCard';
-import CountrySalesCard from '@components/ui/dashboard/card/CountrySalesCard';
-import UserInfo from '@components/ui/dashboard/user-info/UserInfo';
 import { OrdersStatus } from '@components/ui/dashboard/user-table/UserTable';
+import CountrySalesCard from '@components/ui/dashboard/card/CountrySalesCard';
+import ProfitCard from '@components/ui/dashboard/card/ProfitCard';
+import SalesCard from '@components/ui/dashboard/card/SalesCard';
+import UserInfo from '@components/ui/dashboard/user-info/UserInfo';
 import UserTable from '@components/ui/dashboard/user-table/UserTable';
 
 const Dashboard: React.FunctionComponent = () => {

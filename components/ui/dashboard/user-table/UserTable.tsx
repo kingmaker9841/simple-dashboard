@@ -1,10 +1,11 @@
 import React from 'react';
+import { classNames } from 'utils/helper';
+import { OrderStatusEnum } from 'context/orderStatusContext';
+import DashboardTable from '@components/ui/table/DashboardTable';
 import DropDown from '@components/ui/select/Select';
 import Search from '@components/ui/search/SearchTable';
-import DashboardTable from '@components/ui/table/DashboardTable';
-import { OrderStatusEnum } from 'context/orderStatusContext';
-import useOrderStatus from 'hooks/useOrderStatus';
 import type { GetSearchProps } from '@components/ui/search/Search';
+import useOrderStatus from 'hooks/useOrderStatus';
 
 const dropdownOptions = [
   {
@@ -36,16 +37,16 @@ export const OrdersStatus: React.FunctionComponent = () => {
     <div className="ml-8 flex justify-start">
       <div
         onClick={() => handleClick(OrderStatusEnum.allOrders)}
-        className={[
+        className={classNames(
           'cursor-pointer',
-          activeOrderStatus === OrderStatusEnum.allOrders ? 'border-b-2 border-vividBlue text-vividBlue' : '',
-        ].join(' ')}
+          activeOrderStatus === OrderStatusEnum.allOrders ? 'border-b-2 border-vividBlue text-vividBlue' : ''
+        )}
       >
         <p
-          className={[
+          className={classNames(
             'px-6 py-4 leading-[22px] text-slateLavender',
-            activeOrderStatus === OrderStatusEnum.allOrders ? 'text-vividBlue' : '',
-          ].join(' ')}
+            activeOrderStatus === OrderStatusEnum.allOrders ? 'text-vividBlue' : ''
+          )}
         >
           {OrderStatusEnum.allOrders}
         </p>
@@ -53,16 +54,16 @@ export const OrdersStatus: React.FunctionComponent = () => {
 
       <div
         onClick={() => handleClick(OrderStatusEnum.completed)}
-        className={[
+        className={classNames(
           'ml-6 cursor-pointer',
-          activeOrderStatus === OrderStatusEnum.completed ? 'border-b-2 border-vividBlue text-vividBlue' : '',
-        ].join(' ')}
+          activeOrderStatus === OrderStatusEnum.completed ? 'border-b-2 border-vividBlue text-vividBlue' : ''
+        )}
       >
         <p
-          className={[
+          className={classNames(
             'px-6 py-4 leading-[22px] text-slateLavender',
-            activeOrderStatus === OrderStatusEnum.completed ? 'text-vividBlue' : '',
-          ].join(' ')}
+            activeOrderStatus === OrderStatusEnum.completed ? 'text-vividBlue' : ''
+          )}
         >
           {OrderStatusEnum.completed}
         </p>
@@ -70,16 +71,16 @@ export const OrdersStatus: React.FunctionComponent = () => {
 
       <div
         onClick={() => handleClick(OrderStatusEnum.canceled)}
-        className={[
+        className={classNames(
           'ml-6 cursor-pointer',
-          activeOrderStatus === OrderStatusEnum.canceled ? 'border-b-2 border-vividBlue text-vividBlue' : '',
-        ].join(' ')}
+          activeOrderStatus === OrderStatusEnum.canceled ? 'border-b-2 border-vividBlue text-vividBlue' : ''
+        )}
       >
         <p
-          className={[
+          className={classNames(
             'px-6 py-4 leading-[22px] text-slateLavender',
-            activeOrderStatus === OrderStatusEnum.canceled ? 'text-vividBlue' : '',
-          ].join(' ')}
+            activeOrderStatus === OrderStatusEnum.canceled ? 'text-vividBlue' : ''
+          )}
         >
           {OrderStatusEnum.canceled}
         </p>

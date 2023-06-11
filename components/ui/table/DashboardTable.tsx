@@ -1,4 +1,6 @@
 import React from 'react';
+import { classNames } from 'utils/helper';
+import { OrderStatusEnum } from 'context/orderStatusContext';
 import { tableHead, tableRow } from 'data/tableData';
 import DropDown from '@components/ui/select/Select';
 import Pagination from '@components/ui/pagination/Pagination';
@@ -6,7 +8,6 @@ import TBody from '@components/ui/table/TableBody';
 import TFooter from '@components/ui/table/TableFooter';
 import THead from '@components/ui/table/TableHead';
 import useOrderStatus from 'hooks/useOrderStatus';
-import { OrderStatusEnum } from 'context/orderStatusContext';
 
 export type HeaderProps = {
   id: number;
@@ -54,7 +55,7 @@ export const TableHead: React.FunctionComponent<{ cols: HeaderProps[] }> = ({ co
       {cols.map(head => (
         <th
           key={head.id}
-          className={['border-b-2 border-lavenderMist px-9 py-4 text-left', `text-${head.align}`].join(' ')}
+          className={classNames('border-b-2 border-lavenderMist px-9 py-4 text-left', `text-${head.align}`)}
         >
           <span className="text-xs font-medium leading-[15px] text-slateLavender">{head.label}</span>
         </th>
@@ -74,11 +75,11 @@ export const TableBody: React.FunctionComponent<{ rows: BodyProps[] }> = ({ rows
           <td className="px-9 py-4">{row.total}</td>
           <td className="px-9 py-4">{row.method}</td>
           <td
-            className={[
+            className={classNames(
               'px-9 py-4 text-goldenSun',
               row.status === OrderStatusEnum.completed ? 'text-emeraldGreen' : '',
-              row.status === OrderStatusEnum.canceled ? 'text-crimsonCoral' : '',
-            ].join(' ')}
+              row.status === OrderStatusEnum.canceled ? 'text-crimsonCoral' : ''
+            )}
           >
             {row.status}
           </td>

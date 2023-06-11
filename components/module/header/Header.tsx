@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { BellIcon } from '@components/icons';
+import { classNames } from 'utils/helper';
 
 type Props = {
   sidebarCollapsed: boolean;
@@ -7,7 +8,7 @@ type Props = {
 
 const Header: FunctionComponent<Props> = ({ sidebarCollapsed }) => {
   return (
-    <header className={['flex items-center', !sidebarCollapsed ? 'header' : 'header--collapsed'].join(' ')}>
+    <header className={classNames('flex items-center', !sidebarCollapsed ? 'header' : 'header--collapsed')}>
       <div className="flex w-full items-center justify-between">
         <h2>Dashboard</h2>
         <div className="flex items-center justify-around">

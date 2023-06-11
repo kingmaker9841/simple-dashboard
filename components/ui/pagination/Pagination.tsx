@@ -1,4 +1,5 @@
 import React from 'react';
+import { classNames } from 'utils/helper';
 import { usePagination, DOTS } from 'hooks/usePagination';
 
 type Props = {
@@ -40,7 +41,7 @@ const Pagination: React.FunctionComponent<Props> = props => {
       {showComponent}
       <ul className={['pagination-container', className].join(' ')}>
         {/* Left navigation arrow */}
-        <li className={['pagination-item', currentPage === 1 ? 'disabled' : ''].join(' ')} onClick={onPrevious}>
+        <li className={classNames('pagination-item', currentPage === 1 ? 'disabled' : '')} onClick={onPrevious}>
           <div className="arrow left" />
         </li>
         {paginationRange.map((pageNumber, _) => {
@@ -53,7 +54,7 @@ const Pagination: React.FunctionComponent<Props> = props => {
           return (
             <li
               key={_}
-              className={['pagination-item', pageNumber === currentPage ? 'selected' : ''].join(' ')}
+              className={classNames('pagination-item', pageNumber === currentPage ? 'selected' : '')}
               onClick={() => onPageChange(pageNumber)}
             >
               {pageNumber}
@@ -61,7 +62,7 @@ const Pagination: React.FunctionComponent<Props> = props => {
           );
         })}
         {/*  Right Navigation arrow */}
-        <li className={['pagination-item', currentPage === lastPage ? 'disabled' : ''].join(' ')} onClick={onNext}>
+        <li className={classNames('pagination-item', currentPage === lastPage ? 'disabled' : '')} onClick={onNext}>
           <div className="arrow right" />
         </li>
       </ul>
