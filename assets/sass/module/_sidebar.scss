@@ -10,7 +10,7 @@
   left: 0;
   width: 260px;
   min-height: 100vh;
-  transition: width ease-in-out 400ms;
+  transition: width ease-in-out 200ms;
   z-index: 100 !important;
 
   &-logo {
@@ -22,7 +22,7 @@
       @include flex(flex, flex-start, center);
       opacity: 1;
       width: auto;
-      transition: opacity ease-in 1s;
+      transition: opacity ease-in 500ms;
     }
 
     #{$logo}-details-collapsed {
@@ -41,14 +41,14 @@
   left: 0;
   min-height: 110vh;
   width: 70px;
-  transition: width ease-in-out 400ms;
+  transition: width ease-in-out 200ms;
 }
 
 .link-name {
   max-height: 0;
   max-width: 0;
   opacity: 0;
-  transition: opacity 600ms ease-in-out;
+  transition: opacity 200ms ease-in-out;
 }
 
 .link-name-active {

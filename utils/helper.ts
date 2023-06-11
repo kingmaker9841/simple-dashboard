@@ -39,3 +39,7 @@ export const convertPercentageToPixelWidthClass = (percentage: string, totalWidt
 
   return `w-${pixelWidth}px`;
 };
+
+export function classNames(...classes: (false | null | undefined | string)[]): string {
+  return classes.filter(Boolean).join(' ');
+}

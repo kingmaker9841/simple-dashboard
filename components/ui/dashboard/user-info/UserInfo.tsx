@@ -1,4 +1,5 @@
 import React from 'react';
+import { classNames } from 'utils/helper';
 
 const Profile: React.FunctionComponent = () => {
   return (
@@ -63,7 +64,7 @@ const UserInfo: React.FunctionComponent = ({ children }) => {
   return (
     <div className="mt-4 rounded-2xl bg-white pt-2">
       <div className="mt-4 ">
-        <div className={['grid grid-cols-1 gap-4', 'md:grid-cols-2', 'xl:grid-cols-3'].join(' ')}>
+        <div className={classNames('grid grid-cols-1 gap-4', 'md:grid-cols-2', 'xl:grid-cols-3')}>
           <Profile />
           <hr className="md:hidden" />
           <PersonalInformation />
