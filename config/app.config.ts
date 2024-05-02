@@ -1,7 +1,7 @@
 export const apiURL = {};
 
 export const appConfig: AppConfig = {
-  name: process.env.NEXT_PUBLIC_APP_NAME || 'Jobins Frontend Challenges',
+  name: process.env.NEXT_PUBLIC_APP_NAME || 'Jobins Frontend Challenge',
   is_secure: Boolean((process.env.NEXT_PUBLIC_SECURE || 'true') === 'true'),
   base_url: process.env.NEXT_PUBLIC_BASE_URL || 'localhost:3000',
   api_url: process.env.NEXT_PUBLIC_API_URL as AppConfig['api_url'],
